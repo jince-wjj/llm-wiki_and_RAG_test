@@ -419,6 +419,7 @@ def ingest_chapter(chapter_id: int) -> dict:
             phase="wiki_ingest",
             temperature=0.3,
             max_tokens=4000,
+            debug_tag=f"ch{chapter_id:03d}",
         )
     except Exception as e:
         utils.append_progress(
@@ -536,6 +537,51 @@ def already_done_chapter(chapter_id: int) -> bool:
     return (config.CHECKPOINTS_DIR / f"phase3_ch{chapter_id:03d}.json").exists()
 
 
+def _halt_with_blocker(failure_history: list[dict], threshold: int) -> None:
+    """Write a BLOCKERS.md entry summarising why Phase 3 stopped.
+
+    Lists the failed chapters, their last error messages, and the file paths
+    of saved raw responses under wiki/.ingest_logs/parse_failures/ — but
+    deliberately does NOT inline the raw bodies (they can be huge).
+    """
+    chapter_list = ", ".join(str(fh["chapter_id"]) for fh in failure_history)
+    error_lines = "\n".join(
+        f"  - ch{fh['chapter_id']}: {fh['error'][:500]}" for fh in failure_history
+    )
+    parse_failure_dir = config.WIKI_INGEST_LOGS_DIR / "parse_failures"
+    raw_paths: list[str] = []
+    for fh in failure_history:
+        tag = f"ch{fh['chapter_id']:03d}"
+        for k in range(1, 6):  # check more than max_retries in case it grows
+            p = parse_failure_dir / f"{tag}_attempt{k}.txt"
+            if p.exists():
+                raw_paths.append(str(p.relative_to(config.PROJECT_ROOT)))
+    raw_paths_block = (
+        "\n".join(f"  - {p}" for p in raw_paths)
+        if raw_paths
+        else "  (no parse_failures files found — see PROGRESS.md for context)"
+    )
+    body = (
+        f"Phase 3 halted: {threshold} consecutive chapter failures.\n\n"
+        f"Failed chapters: {chapter_list}\n\n"
+        f"Last {len(failure_history)} error messages:\n{error_lines}\n\n"
+        f"Saved raw responses (inspect these to diagnose the parse drift):\n"
+        f"{raw_paths_block}\n\n"
+        f"To resume: fix the root cause (in src/api_client.py parsing or the "
+        f"ingest prompt in src/wiki_ingest.py), then re-run "
+        f"`python -m src.wiki_ingest`. Resume is automatic — only chapters "
+        f"with a checkpoint file are skipped."
+    )
+    utils.append_blocker(
+        f"Phase 3 halted on {threshold} consecutive failures", body
+    )
+    print(
+        f"Phase 3 HALTED: {threshold} consecutive failures "
+        f"(chapters {chapter_list}). See BLOCKERS.md.",
+        flush=True,
+    )
+
+
 def run() -> None:
     if not utils.checkpoint_exists("phase2_done"):
         print("Phase 2 not complete — refusing to run Phase 3.", file=sys.stderr)
@@ -562,6 +608,11 @@ def run() -> None:
         "output_tokens": 0,
     }
 
+    consecutive_failures = 0
+    failure_history: list[dict] = []  # rolling, keeps last MAX_CONSECUTIVE_FAILURES
+    actions_applied_in_window = 0
+    MAX_CONSECUTIVE_FAILURES = 3
+
     for ch in range(1, 81):
         if already_done_chapter(ch):
             print(f"  ch{ch}: already done, skipping (resume)", flush=True)
@@ -570,12 +621,17 @@ def run() -> None:
         print(f"  ch{ch}: ingesting...", flush=True)
         summary = ingest_chapter(ch)
 
-        # Write chapter checkpoint
-        utils.write_json(
-            config.CHECKPOINTS_DIR / f"phase3_ch{ch:03d}.json", summary
-        )
+        # A chapter only counts as "success" when the API call returned AND at
+        # least one wiki page was actually created/updated. This prevents the
+        # earlier failure mode where the model returned a parseable but empty
+        # action list — or where the parse failed entirely — and the loop wrote
+        # a tiny "fake" checkpoint that masked the failure on resume.
+        success = bool(summary.get("ok")) and summary.get("actions_applied", 0) >= 1
 
-        if summary["ok"]:
+        if success:
+            utils.write_json(
+                config.CHECKPOINTS_DIR / f"phase3_ch{ch:03d}.json", summary
+            )
             print(
                 f"  ch{ch}: applied={summary['actions_applied']} "
                 f"(C={summary['creates']} U={summary['updates']} S={summary['skipped']}) "
@@ -588,17 +644,35 @@ def run() -> None:
             total_summary["updates"] += summary["updates"]
             total_summary["input_tokens"] += summary["input_tokens"]
             total_summary["output_tokens"] += summary["output_tokens"]
+            actions_applied_in_window += summary["actions_applied"]
+            consecutive_failures = 0
         else:
-            print(f"  ch{ch}: FAILED - {summary.get('error')}", flush=True)
-            utils.append_progress(
-                f"Phase 3 chapter {ch} failed: {summary.get('error')}"
+            err = summary.get("error") or (
+                "ok=True but actions_applied=0 (model returned no usable actions)"
             )
+            print(f"  ch{ch}: FAILED - {err}", flush=True)
+            utils.append_progress(f"Phase 3 chapter {ch} failed: {err}")
+            consecutive_failures += 1
+            failure_history.append({"chapter_id": ch, "error": err})
+            failure_history = failure_history[-MAX_CONSECUTIVE_FAILURES:]
 
-        # Every 10 chapters: update index + sub-commit
+            if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                _halt_with_blocker(failure_history, MAX_CONSECUTIVE_FAILURES)
+                write_index()
+                return
+
+        # Every 10 chapters: update index + (conditionally) sub-commit
         if ch % 10 == 0:
             write_index()
-            start_ch = ch - 9
-            _git_commit(f"phase3: ingested chapters {start_ch}-{ch}")
+            if actions_applied_in_window > 0:
+                start_ch = ch - 9
+                _git_commit(f"phase3: ingested chapters {start_ch}-{ch}")
+            else:
+                print(
+                    f"  [git] window {ch-9}-{ch}: no actions applied, skipping sub-commit",
+                    flush=True,
+                )
+            actions_applied_in_window = 0
 
     # Final index regen
     write_index()
