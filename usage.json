@@ -1,14 +1,20 @@
 {
-  "total_input_tokens": 9,
-  "total_output_tokens": 1,
-  "estimated_cost_usd": 2e-06,
-  "calls": 2,
+  "total_input_tokens": 2645636,
+  "total_output_tokens": 50792,
+  "estimated_cost_usd": 0.770184,
+  "calls": 256,
   "by_phase": {
     "ping": {
       "input_tokens": 9,
       "output_tokens": 1,
       "calls": 2,
       "cost_usd": 2e-06
+    },
+    "benchmark_gen": {
+      "input_tokens": 2645627,
+      "output_tokens": 50791,
+      "calls": 254,
+      "cost_usd": 0.770182
     }
   }
 }

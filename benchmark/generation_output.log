@@ -1,0 +1,65 @@
+Phase 2: benchmark generation
+Loaded 80 chapters; 30 major characters indexed.
+  T1 attempt 1: ch=[4] generated=5 kept=4 dropped=1 total=4/30
+  T1 attempt 2: ch=[8] generated=5 kept=4 dropped=1 total=8/30
+  T1 attempt 3: ch=[17] generated=5 kept=4 dropped=1 total=12/30
+  T1 attempt 4: ch=[35] generated=5 kept=5 dropped=0 total=17/30
+  T1 attempt 5: ch=[48] generated=5 kept=5 dropped=0 total=22/30
+  T1 attempt 6: ch=[45] generated=5 kept=4 dropped=1 total=26/30
+  T1 attempt 7: ch=[29] generated=4 kept=4 dropped=0 total=30/30
+  T2 attempt 1: ch=[46] generated=5 kept=4 dropped=1 total=4/30
+  T2 attempt 2: ch=[45] generated=5 kept=5 dropped=0 total=9/30
+  T2 attempt 3: ch=[26] generated=5 kept=3 dropped=2 total=12/30
+  T2 attempt 4: ch=[50] generated=5 kept=5 dropped=0 total=17/30
+  T2 attempt 5: ch=[70] generated=5 kept=4 dropped=1 total=21/30
+  T2 attempt 6: ch=[66] generated=5 kept=3 dropped=2 total=24/30
+  T2 attempt 7: generation error ValueError('Could not parse JSON response: Expecting \',\' delimiter: line 39 column 123 (char 2515)\nContent: {\n  "questions": [\n    {\n      "question": "在第四十五回中，李纨和凤姐就诗社一事发生了争论，凤姐指出李纨一年总收入约有四五百两银子，并建议她每年拿出一二百两来陪姑娘们玩。请根据原文，列出凤姐所列举的李纨收入来源的具体项目。",\n      "ground_truth": "凤姐指出李纨的收入来源包括：每月十两银子的月钱（比凤姐多两倍），老太太、太太因她寡妇失业又添了十两，使她与老太太、太太平等；另外还有园子地租，年终分年例时她又是上上分儿。",\n      "source_chapter_ids": [45],\n      "source_evidence": "原文：\'你一个月十两银子的月钱，比我们多两倍银子。老太太，太太还说你寡妇失业的，可怜，不够用，又有个小子，足的又添了十两，和老太太，太太平等。又给你园子地，各人取租年终分年例，你又是上上分儿。\'",\n      "tier": "Tier 2",\n      "confidence": 0.95\n    },\n    {\n      "question": "在第四十五回中，赖嬷嬷来')
+  T2 attempt 8: ch=[19] generated=5 kept=5 dropped=0 total=29/30
+  T2 attempt 9: ch=[72] generated=1 kept=1 dropped=0 total=30/30
+  T3 attempt 1: ch=[8, 34, 57, 62, 63] generated=5 kept=3 dropped=2 total=3/25
+  T3 attempt 2: ch=[18, 50] generated=5 kept=2 dropped=3 total=5/25
+  T3 attempt 3: ch=[22, 58, 67] generated=5 kept=2 dropped=3 total=7/25
+  T3 attempt 4: ch=[22, 38, 50] generated=5 kept=0 dropped=5 total=7/25
+  T3 attempt 5: ch=[14, 20, 32, 43] generated=5 kept=0 dropped=5 total=7/25
+Phase 2: benchmark generation
+Loaded 80 chapters; 30 major characters indexed.
+Resuming. Accepted so far: T1=30, T2=30, T3=7, T4=0
+  T3 attempt 1: ch=[3, 48] generated=5 kept=1 dropped=4 total=8/25
+  T3 attempt 2: ch=[16, 46, 75, 79] generated=5 kept=4 dropped=1 total=12/25
+  T3 attempt 3: ch=[49, 58, 62] generated=5 kept=1 dropped=4 total=13/25
+  T3 attempt 4: ch=[22, 54, 72] generated=5 kept=1 dropped=4 total=14/25
+  T3 attempt 5: ch=[3, 18, 20] generated=5 kept=2 dropped=3 total=16/25
+  T3 attempt 6: ch=[18, 50] generated=5 kept=5 dropped=0 total=21/25
+  T3 attempt 7: ch=[22, 58, 67] generated=4 kept=3 dropped=1 total=24/25
+  T3 attempt 8: ch=[22, 38, 50] generated=1 kept=0 dropped=1 total=24/25
+  T3 attempt 9: ch=[14, 20, 32, 43] generated=1 kept=0 dropped=1 total=24/25
+  T3 attempt 10: ch=[3, 58, 61, 62] generated=1 kept=0 dropped=1 total=24/25
+  T3 attempt 11: ch=[20, 58, 63] generated=1 kept=0 dropped=1 total=24/25
+  T3 attempt 12: ch=[29, 31, 57] generated=1 kept=1 dropped=0 total=25/25
+  T4 attempt 1: ch=[27, 35, 37, 50, 67] generated=5 kept=0 dropped=5 total=0/15
+  T4 attempt 2: ch=[41, 44, 53] generated=5 kept=3 dropped=2 total=3/15
+  T4 attempt 3: ch=[5, 8, 18] generated=5 kept=3 dropped=2 total=6/15
+  T4 attempt 4: ch=[29, 35] generated=5 kept=3 dropped=2 total=9/15
+  T4 attempt 5: ch=[13, 15, 16, 19, 67] generated=5 kept=2 dropped=3 total=11/15
+  T4 attempt 6: ch=[33, 37, 49, 71, 79] generated=4 kept=1 dropped=3 total=12/15
+  T4 attempt 7: ch=[30, 63, 64] generated=3 kept=0 dropped=3 total=12/15
+  T4 attempt 8: ch=[3, 12, 13, 33] generated=3 kept=1 dropped=2 total=13/15
+  T4 attempt 9: ch=[22, 40, 62, 71, 75] generated=2 kept=0 dropped=2 total=13/15
+  T4 attempt 10: ch=[7, 49, 60] generated=2 kept=0 dropped=2 total=13/15
+  T4 attempt 11: ch=[2, 35, 58, 62] generated=2 kept=1 dropped=1 total=14/15
+  T4 attempt 12: ch=[11, 19, 47, 53, 67] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 13: ch=[18, 73] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 14: ch=[5, 44, 62, 63, 70] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 15: ch=[18, 20, 33, 54] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 16: ch=[11, 71] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 17: ch=[7, 55] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 18: ch=[18, 19] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 19: ch=[36, 62] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 20: ch=[25, 37, 38, 49, 69] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 21: ch=[22, 25, 58, 62, 75] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 22: ch=[14, 18, 19, 53, 64] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 23: ch=[3, 30, 34, 44, 70] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 24: ch=[24, 54, 58, 67, 78] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 25: ch=[3, 13, 33, 54, 72] generated=1 kept=0 dropped=1 total=14/15
+  T4 attempt 26: ch=[23, 55] generated=1 kept=1 dropped=0 total=15/15
+Phase 2 complete: wrote 100 questions to /Users/jince12345/code/projects/llm-wiki_and_RAG_test/benchmark/questions.json

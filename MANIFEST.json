@@ -15,6 +15,7 @@
   "data_scope": "前80回",
   "rag_baseline": "naive_chunk_embed_topk",
   "phases_completed": [
-    "phase1"
+    "phase1",
+    "phase2"
   ]
 }
