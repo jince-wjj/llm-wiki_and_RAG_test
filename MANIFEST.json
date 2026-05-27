@@ -14,5 +14,7 @@
   },
   "data_scope": "前80回",
   "rag_baseline": "naive_chunk_embed_topk",
-  "phases_completed": []
+  "phases_completed": [
+    "phase1"
+  ]
 }

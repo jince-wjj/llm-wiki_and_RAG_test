@@ -1,7 +1,14 @@
 {
-  "total_input_tokens": 0,
-  "total_output_tokens": 0,
-  "estimated_cost_usd": 0.0,
-  "calls": 0,
-  "by_phase": {}
+  "total_input_tokens": 9,
+  "total_output_tokens": 1,
+  "estimated_cost_usd": 2e-06,
+  "calls": 2,
+  "by_phase": {
+    "ping": {
+      "input_tokens": 9,
+      "output_tokens": 1,
+      "calls": 2,
+      "cost_usd": 2e-06
+    }
+  }
 }

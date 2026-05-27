@@ -7,3 +7,5 @@ tenacity
 numpy
 jieba
 requests
+# socksio is needed by httpx if SOCKS proxy env vars are set (common in CN)
+socksio
