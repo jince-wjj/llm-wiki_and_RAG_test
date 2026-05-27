@@ -1,1 +1,13 @@
+.env
+.env.local
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+rag_baseline/chroma_db/
+wiki/.ingest_logs/
+*.swp
+.venv/
+venv/
 .idea/
+.vscode/

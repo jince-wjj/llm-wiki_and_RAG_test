@@ -1,0 +1,18 @@
+{
+  "experiment_name": "hongloumeng-wiki-vs-rag",
+  "agent_role": "builder_runner",
+  "started_at": "2026-05-27T15:53:00+08:00",
+  "models": {
+    "ingest": "deepseek-chat",
+    "answer": "deepseek-chat",
+    "benchmark_gen": "deepseek-chat",
+    "embedding": "BAAI/bge-m3"
+  },
+  "api_endpoints": {
+    "deepseek": "https://api.deepseek.com/v1",
+    "siliconflow": "https://api.siliconflow.cn/v1"
+  },
+  "data_scope": "前80回",
+  "rag_baseline": "naive_chunk_embed_topk",
+  "phases_completed": []
+}

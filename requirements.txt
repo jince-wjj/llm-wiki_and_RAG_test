@@ -1,0 +1,9 @@
+openai>=1.30
+chromadb>=0.5
+tiktoken
+python-dotenv
+tqdm
+tenacity
+numpy
+jieba
+requests
