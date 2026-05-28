@@ -1,0 +1,12 @@
+{
+  "chapter_id": 49,
+  "ok": true,
+  "actions_attempted": 20,
+  "actions_applied": 20,
+  "creates": 11,
+  "updates": 9,
+  "skipped": 0,
+  "input_tokens": 21185,
+  "output_tokens": 5271,
+  "latency_ms": 47545
+}
