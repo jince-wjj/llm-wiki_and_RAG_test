@@ -77,3 +77,5 @@ Bootstrapping directory structure and config templates.
 ## [2026-05-28T11:12:15+08:00] WARN: chapter 29 ingest call failed: APIConnectionError('Connection error.')
 
 ## [2026-05-28T11:12:15+08:00] Phase 3 chapter 29 failed: APIConnectionError('Connection error.')
+
+## [2026-05-28T11:16:49+08:00] Phase 3 started: LLM-Wiki ingest
