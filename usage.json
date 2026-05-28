@@ -1,8 +1,8 @@
 {
-  "total_input_tokens": 4210621,
-  "total_output_tokens": 393128,
-  "estimated_cost_usd": 1.569303,
-  "calls": 346,
+  "total_input_tokens": 5793917,
+  "total_output_tokens": 412424,
+  "estimated_cost_usd": 1.820696,
+  "calls": 974,
   "by_phase": {
     "ping": {
       "input_tokens": 14,
@@ -21,6 +21,24 @@
       "output_tokens": 342335,
       "calls": 89,
       "cost_usd": 0.799118
+    },
+    "rag_ingest": {
+      "input_tokens": 646874,
+      "output_tokens": 0,
+      "calls": 100,
+      "cost_usd": 0.0
+    },
+    "rag_query": {
+      "input_tokens": 203685,
+      "output_tokens": 8567,
+      "calls": 200,
+      "cost_usd": 0.063327
+    },
+    "wiki_query": {
+      "input_tokens": 732737,
+      "output_tokens": 10729,
+      "calls": 328,
+      "cost_usd": 0.188063
     }
   }
 }

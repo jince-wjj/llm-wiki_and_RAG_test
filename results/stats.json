@@ -1,0 +1,98 @@
+{
+  "compiled_at": "2026-05-28T12:53:39+08:00",
+  "model": "deepseek-chat",
+  "wiki_system": {
+    "n_entries": 100,
+    "non_empty_answers": 100,
+    "total_input_tokens": 640767,
+    "total_output_tokens": 8342,
+    "total_latency_ms": 273286,
+    "avg_latency_ms": 2732.9,
+    "avg_answer_chars": 117.2,
+    "median_answer_chars": 114.0,
+    "by_tier": {
+      "Tier 1": {
+        "n": 30,
+        "input_tokens": 166924,
+        "output_tokens": 1593,
+        "avg_latency_ms": 2677.5,
+        "avg_answer_chars": 76.2
+      },
+      "Tier 2": {
+        "n": 30,
+        "input_tokens": 199138,
+        "output_tokens": 2192,
+        "avg_latency_ms": 2375.0,
+        "avg_answer_chars": 101.6
+      },
+      "Tier 3": {
+        "n": 25,
+        "input_tokens": 168017,
+        "output_tokens": 2741,
+        "avg_latency_ms": 2986.0,
+        "avg_answer_chars": 152.3
+      },
+      "Tier 4": {
+        "n": 15,
+        "input_tokens": 106688,
+        "output_tokens": 1816,
+        "avg_latency_ms": 3137.4,
+        "avg_answer_chars": 171.9
+      }
+    }
+  },
+  "rag_baseline": {
+    "n_entries": 100,
+    "non_empty_answers": 100,
+    "total_input_tokens": 199642,
+    "total_output_tokens": 8567,
+    "total_latency_ms": 215934,
+    "avg_latency_ms": 2159.3,
+    "avg_answer_chars": 117.5,
+    "median_answer_chars": 120.0,
+    "by_tier": {
+      "Tier 1": {
+        "n": 30,
+        "input_tokens": 60377,
+        "output_tokens": 1295,
+        "avg_latency_ms": 1535.6,
+        "avg_answer_chars": 58.9
+      },
+      "Tier 2": {
+        "n": 30,
+        "input_tokens": 58826,
+        "output_tokens": 2738,
+        "avg_latency_ms": 2103.2,
+        "avg_answer_chars": 125.3
+      },
+      "Tier 3": {
+        "n": 25,
+        "input_tokens": 50286,
+        "output_tokens": 2809,
+        "avg_latency_ms": 2599.4,
+        "avg_answer_chars": 152.9
+      },
+      "Tier 4": {
+        "n": 15,
+        "input_tokens": 30153,
+        "output_tokens": 1725,
+        "avg_latency_ms": 2785.6,
+        "avg_answer_chars": 160.2
+      }
+    }
+  },
+  "wiki_pages": {
+    "total": 448,
+    "by_type": {
+      "人物": 291,
+      "地点": 49,
+      "事件": 61,
+      "概念": 47
+    }
+  },
+  "rag_chunks": {
+    "n_chunks": 1573,
+    "chunk_size": 500,
+    "overlap": 100
+  }
+}

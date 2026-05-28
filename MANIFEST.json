@@ -16,6 +16,13 @@
   "rag_baseline": "naive_chunk_embed_topk",
   "phases_completed": [
     "phase1",
-    "phase2"
-  ]
+    "phase2",
+    "phase3",
+    "phase4",
+    "phase5",
+    "phase6"
+  ],
+  "completed_at": "2026-05-28T12:08:00+08:00",
+  "budget_cap_usd": 15.0,
+  "estimated_total_cost_usd": 1.82
 }

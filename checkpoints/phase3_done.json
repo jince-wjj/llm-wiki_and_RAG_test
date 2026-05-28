@@ -1,0 +1,16 @@
+{
+  "completed_at": "2026-05-28T11:54:27+08:00",
+  "chapters_ingested": 54,
+  "actions_applied": 1062,
+  "creates": 216,
+  "updates": 846,
+  "input_tokens": 1156341,
+  "output_tokens": 212630,
+  "total_pages": 448,
+  "by_type": {
+    "人物": 291,
+    "地点": 49,
+    "事件": 61,
+    "概念": 47
+  }
+}
