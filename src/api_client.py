@@ -214,6 +214,15 @@ _JSON_STRICTER_DIRECTIVE = (
 )
 
 
+class _TruncationError(ValueError):
+    """Model response was cut off because finish_reason='length'.
+
+    Subclasses ValueError so existing exception handlers catch it, but the
+    distinct type makes downstream diagnostics ("the JSON looked malformed!")
+    obviously wrong — the JSON wasn't malformed, it was unfinished.
+    """
+
+
 def chat_complete_json(
     *,
     messages: list[dict],
@@ -277,6 +286,17 @@ def chat_complete_json(
         content = result["content"] or ""
 
         try:
+            # Detect truncation BEFORE parsing: an output that hit max_tokens
+            # is structurally unfinished, so json.loads will fail with a
+            # confusing "Expecting , delimiter" or similar at the cut-off
+            # point. Surface this as its own error type so diagnostics stay
+            # honest about the root cause.
+            if result.get("finish_reason") == "length":
+                raise _TruncationError(
+                    f"Response truncated at max_tokens={max_tokens} "
+                    f"(output_tokens={result.get('output_tokens')}). "
+                    f"Raise max_tokens or shorten the prompt."
+                )
             parsed = _robust_parse_json(content)
             return parsed, result
         except (json.JSONDecodeError, ValueError) as e:

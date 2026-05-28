@@ -418,7 +418,7 @@ def ingest_chapter(chapter_id: int) -> dict:
             ],
             phase="wiki_ingest",
             temperature=0.3,
-            max_tokens=4000,
+            max_tokens=8000,
             debug_tag=f"ch{chapter_id:03d}",
         )
     except Exception as e:

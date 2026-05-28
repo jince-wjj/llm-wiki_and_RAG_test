@@ -19,3 +19,28 @@ Fix: added `opencc-python-reimplemented` and convert `t -> s` immediately after
 download. The on-disk `raw/hongloumeng_full.txt` is now normalized to simplified
 Chinese, matching the variant used by the benchmark and wiki. Validation now
 passes (8/8 names). No user action needed.
+
+---
+## [2026-05-28T09:14:13+08:00] Phase 3 halted on 3 consecutive failures
+
+Phase 3 halted: 3 consecutive chapter failures.
+
+Failed chapters: 1, 2, 3
+
+Last 3 error messages:
+  - ch1: ValueError("All 3 JSON parse attempts failed for tag=ch001. Last error: JSONDecodeError: Expecting ',' delimiter: line 138 column 6 (char 7559)")
+  - ch2: ValueError("All 3 JSON parse attempts failed for tag=ch002. Last error: JSONDecodeError: Expecting ',' delimiter: line 146 column 6 (char 7866)")
+  - ch3: ValueError("All 3 JSON parse attempts failed for tag=ch003. Last error: JSONDecodeError: Expecting ',' delimiter: line 90 column 6 (char 6509)")
+
+Saved raw responses (inspect these to diagnose the parse drift):
+  - wiki/.ingest_logs/parse_failures/ch001_attempt1.txt
+  - wiki/.ingest_logs/parse_failures/ch001_attempt2.txt
+  - wiki/.ingest_logs/parse_failures/ch001_attempt3.txt
+  - wiki/.ingest_logs/parse_failures/ch002_attempt1.txt
+  - wiki/.ingest_logs/parse_failures/ch002_attempt2.txt
+  - wiki/.ingest_logs/parse_failures/ch002_attempt3.txt
+  - wiki/.ingest_logs/parse_failures/ch003_attempt1.txt
+  - wiki/.ingest_logs/parse_failures/ch003_attempt2.txt
+  - wiki/.ingest_logs/parse_failures/ch003_attempt3.txt
+
+To resume: fix the root cause (in src/api_client.py parsing or the ingest prompt in src/wiki_ingest.py), then re-run `python -m src.wiki_ingest`. Resume is automatic — only chapters with a checkpoint file are skipped.
