@@ -44,3 +44,20 @@ Saved raw responses (inspect these to diagnose the parse drift):
   - wiki/.ingest_logs/parse_failures/ch003_attempt3.txt
 
 To resume: fix the root cause (in src/api_client.py parsing or the ingest prompt in src/wiki_ingest.py), then re-run `python -m src.wiki_ingest`. Resume is automatic — only chapters with a checkpoint file are skipped.
+
+---
+## [2026-05-28T11:12:15+08:00] Phase 3 halted on 3 consecutive failures
+
+Phase 3 halted: 3 consecutive chapter failures.
+
+Failed chapters: 27, 28, 29
+
+Last 3 error messages:
+  - ch27: APIConnectionError('Connection error.')
+  - ch28: APIConnectionError('Connection error.')
+  - ch29: APIConnectionError('Connection error.')
+
+Saved raw responses (inspect these to diagnose the parse drift):
+  (no parse_failures files found — see PROGRESS.md for context)
+
+To resume: fix the root cause (in src/api_client.py parsing or the ingest prompt in src/wiki_ingest.py), then re-run `python -m src.wiki_ingest`. Resume is automatic — only chapters with a checkpoint file are skipped.

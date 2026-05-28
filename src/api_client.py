@@ -39,7 +39,7 @@ class APIFatal(RuntimeError):
 
 @retry(
     reraise=True,
-    stop=stop_after_attempt(3),
+    stop=stop_after_attempt(8),
     wait=wait_exponential(multiplier=2, min=2, max=60),
     retry=retry_if_exception_type(_RETRYABLE),
 )
@@ -334,7 +334,7 @@ def chat_complete_json(
 
 @retry(
     reraise=True,
-    stop=stop_after_attempt(3),
+    stop=stop_after_attempt(8),
     wait=wait_exponential(multiplier=2, min=2, max=60),
     retry=retry_if_exception_type(_RETRYABLE),
 )

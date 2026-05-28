@@ -65,3 +65,15 @@ Bootstrapping directory structure and config templates.
 ## [2026-05-28T09:14:13+08:00] Phase 3 chapter 3 failed: ValueError("All 3 JSON parse attempts failed for tag=ch003. Last error: JSONDecodeError: Expecting ',' delimiter: line 90 column 6 (char 6509)")
 
 ## [2026-05-28T10:55:42+08:00] Phase 3 started: LLM-Wiki ingest
+
+## [2026-05-28T11:11:55+08:00] WARN: chapter 27 ingest call failed: APIConnectionError('Connection error.')
+
+## [2026-05-28T11:11:55+08:00] Phase 3 chapter 27 failed: APIConnectionError('Connection error.')
+
+## [2026-05-28T11:12:04+08:00] WARN: chapter 28 ingest call failed: APIConnectionError('Connection error.')
+
+## [2026-05-28T11:12:04+08:00] Phase 3 chapter 28 failed: APIConnectionError('Connection error.')
+
+## [2026-05-28T11:12:15+08:00] WARN: chapter 29 ingest call failed: APIConnectionError('Connection error.')
+
+## [2026-05-28T11:12:15+08:00] Phase 3 chapter 29 failed: APIConnectionError('Connection error.')

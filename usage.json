@@ -1,14 +1,14 @@
 {
-  "total_input_tokens": 2945857,
-  "total_output_tokens": 159276,
-  "estimated_cost_usd": 0.97058,
-  "calls": 285,
+  "total_input_tokens": 3054280,
+  "total_output_tokens": 180498,
+  "estimated_cost_usd": 1.023197,
+  "calls": 292,
   "by_phase": {
     "ping": {
-      "input_tokens": 9,
-      "output_tokens": 1,
-      "calls": 2,
-      "cost_usd": 2e-06
+      "input_tokens": 14,
+      "output_tokens": 2,
+      "calls": 3,
+      "cost_usd": 4e-06
     },
     "benchmark_gen": {
       "input_tokens": 2645627,
@@ -17,10 +17,10 @@
       "cost_usd": 0.770182
     },
     "wiki_ingest": {
-      "input_tokens": 300221,
-      "output_tokens": 108484,
-      "calls": 29,
-      "cost_usd": 0.200397
+      "input_tokens": 408639,
+      "output_tokens": 129705,
+      "calls": 35,
+      "cost_usd": 0.253012
     }
   }
 }

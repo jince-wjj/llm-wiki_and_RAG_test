@@ -20,3 +20,9 @@
 ## [2026-05-28T11:06:38+08:00] ingest | chapter 第18回 | pages touched: 20
 ## [2026-05-28T11:07:06+08:00] ingest | chapter 第19回 | pages touched: 20
 ## [2026-05-28T11:07:39+08:00] ingest | chapter 第20回 | pages touched: 20
+## [2026-05-28T11:08:15+08:00] ingest | chapter 第21回 | pages touched: 20
+## [2026-05-28T11:08:51+08:00] ingest | chapter 第22回 | pages touched: 20
+## [2026-05-28T11:09:27+08:00] ingest | chapter 第23回 | pages touched: 20
+## [2026-05-28T11:09:57+08:00] ingest | chapter 第24回 | pages touched: 20
+## [2026-05-28T11:10:36+08:00] ingest | chapter 第25回 | pages touched: 20
+## [2026-05-28T11:11:11+08:00] ingest | chapter 第26回 | pages touched: 20
