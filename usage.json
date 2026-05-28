@@ -1,8 +1,8 @@
 {
-  "total_input_tokens": 2705939,
-  "total_output_tokens": 86791,
-  "estimated_cost_usd": 0.826066,
-  "calls": 265,
+  "total_input_tokens": 2799440,
+  "total_output_tokens": 124187,
+  "estimated_cost_usd": 0.892449,
+  "calls": 275,
   "by_phase": {
     "ping": {
       "input_tokens": 9,
@@ -17,10 +17,10 @@
       "cost_usd": 0.770182
     },
     "wiki_ingest": {
-      "input_tokens": 60303,
-      "output_tokens": 35999,
-      "calls": 9,
-      "cost_usd": 0.055883
+      "input_tokens": 153804,
+      "output_tokens": 73395,
+      "calls": 19,
+      "cost_usd": 0.122266
     }
   }
 }
