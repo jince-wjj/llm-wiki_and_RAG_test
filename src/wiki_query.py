@@ -158,7 +158,7 @@ def vector_search_wiki(collection, query: str, k: int = VECTOR_TOP_PAGES) -> lis
     return res["ids"][0] if res["ids"] else []
 
 
-def format_page_block(page: dict, max_chars: int = 4000) -> str:
+def format_page_block(page: dict, max_chars: int = 24000) -> str:
     text = page.get("full_text") or ""
     if len(text) > max_chars:
         text = text[:max_chars] + "\n[... 页面较长,已截断 ...]"
